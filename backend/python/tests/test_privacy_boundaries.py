@@ -5,7 +5,13 @@ from fastapi import HTTPException
 
 from models.request import ComputeRouteRequest
 from routes import compute
+from services.city_loader import get_city
 from services.spatial import nearest_edge
+
+
+def test_city_loader_rejects_untrusted_names():
+    with pytest.raises(ValueError, match="Unsupported city"):
+        get_city("../../tmp")
 
 
 def test_outside_coverage_error_does_not_include_coordinates():

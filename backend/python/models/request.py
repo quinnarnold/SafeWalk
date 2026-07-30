@@ -1,11 +1,20 @@
 """Pydantic request models."""
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
 class ComputeRouteRequest(BaseModel):
     """Request model for route computation."""
 
-    city: str = Field(
+    city: Literal[
+        "atlanta",
+        "boston",
+        "chicago",
+        "newyork",
+        "philadelphia",
+        "seattle",
+    ] = Field(
         ...,
         description=(
             "City name (one of: atlanta, boston, chicago, newyork, "

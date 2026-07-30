@@ -16,6 +16,14 @@ from config import settings
 logger = logging.getLogger(__name__)
 
 _CITIES: dict[str, dict[str, Any]] = {}
+_CITY_DIRECTORIES = {
+    "atlanta": "atlanta",
+    "boston": "boston",
+    "chicago": "chicago",
+    "newyork": "newyork",
+    "philadelphia": "philadelphia",
+    "seattle": "seattle",
+}
 
 
 def get_city(name: str | None = None) -> dict[str, Any]:
@@ -27,13 +35,16 @@ def get_city(name: str | None = None) -> dict[str, Any]:
     and edge_refs. Cached in memory after first load.
     """
     city_name = name or settings.CITY_NAME
+    city_directory = _CITY_DIRECTORIES.get(city_name)
+    if city_directory is None:
+        raise ValueError("Unsupported city")
 
     if city_name in _CITIES:
         return _CITIES[city_name]
 
     logger.info(f"[city_loader] Loading prebuilt {city_name} data...")
 
-    data_dir = os.path.join(settings.DATA_DIR, city_name)
+    data_dir = os.path.join(settings.DATA_DIR, city_directory)
     pickle_path = os.path.join(data_dir, "city_data.pkl")
     joblib_path = os.path.join(data_dir, "city_data.joblib")
 

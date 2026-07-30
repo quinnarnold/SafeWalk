@@ -63,6 +63,17 @@ class TestComputeRouteRequest:
                 speed_mps=-1.0,  # Invalid: negative
             )
 
+    def test_invalid_city(self):
+        """Test validation rejects unsupported city names."""
+        with pytest.raises(ValidationError):
+            ComputeRouteRequest(
+                city="../../tmp",
+                src_lat=42.361,
+                src_lon=-71.057,
+                dst_lat=42.355,
+                dst_lon=-71.065,
+            )
+
 
 class TestRouteInfo:
     """Tests for RouteInfo model."""

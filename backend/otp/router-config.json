@@ -1,0 +1,28 @@
+{
+  "routingDefaults": {
+    "walk": {
+      "speed": 1.33,
+      "reluctance": 2.0,
+      "safetyFactor": 1.0
+    },
+    "transferSlack": 120,
+    "boardSlackForMode": {
+      "BUS": "PT3M",
+      "SUBWAY": "PT2M",
+      "RAIL": "PT3M",
+      "TRAM": "PT2M",
+      "FERRY": "PT5M"
+    },
+    "numItineraries": 10,
+    "searchWindow": "PT2H"
+  },
+  "transit": {
+    "dynamicSearchWindow": {
+      "minWindow": "PT30M",
+      "maxWindow": "PT3H"
+    }
+  },
+  "server": {
+    "apiProcessingTimeout": "PT30S"
+  }
+}

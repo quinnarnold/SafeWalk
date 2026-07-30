@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otp
+  namespace: safewalk
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: otp
+  template:
+    metadata:
+      labels:
+        app: otp
+    spec:
+      containers:
+        - name: otp
+          image: ghcr.io/your-org/safewalk-otp:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Xmx4500m -XX:+UseG1GC -XX:+UseContainerSupport"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "3.5Gi"
+            limits:
+              cpu: "1500m"
+              memory: "6Gi"
+          readinessProbe:
+            httpGet:
+              path: /otp/actuators/health
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 15
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /otp/actuators/health
+              port: 8080
+            initialDelaySeconds: 600
+            periodSeconds: 30
+            timeoutSeconds: 10
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otp-svc
+  namespace: safewalk
+spec:
+  selector:
+    app: otp
+  ports:
+    - port: 8090
+      targetPort: 8080

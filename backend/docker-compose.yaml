@@ -1,0 +1,54 @@
+# =============================================================================
+# Docker Compose for local development/testing
+# =============================================================================
+
+services:
+  # SafeWalk hybrid backend
+  safewalk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CITY_NAME: ${CITY_NAME:-boston}
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - NODE_ENV=development
+      - CITY_NAME=${CITY_NAME:-boston}
+      - MAPBOX_TOKEN=${MAPBOX_TOKEN:-}
+      - MAPBOX_USERNAME=${MAPBOX_USERNAME:-}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - PYTHON_URL=http://127.0.0.1:8000
+      - AUTH_MODE=disabled
+      - APP_ATTEST_APP_ID=${APP_ATTEST_APP_ID:-}
+      - APP_ATTEST_BUNDLE_VERSION=${APP_ATTEST_BUNDLE_VERSION:-}
+      - APP_ATTEST_ALLOWED_VALIDATION_CATEGORIES=${APP_ATTEST_ALLOWED_VALIDATION_CATEGORIES:-2,3,4,5}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:8080}
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  redis-data:

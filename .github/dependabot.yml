@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: bun
+    directory: /backend/ts
+    schedule:
+      interval: weekly
+  - package-ecosystem: pip
+    directory: /backend/python
+    schedule:
+      interval: weekly
+  - package-ecosystem: uv
+    directory: /backend-files
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: swift
+    directory: /frontend
+    schedule:
+      interval: weekly

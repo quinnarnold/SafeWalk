@@ -1,0 +1,101 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.netrc
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.mobileprovision
+*.xcconfig
+!*.xcconfig.example
+credentials.json
+secrets/
+backend/k8s/secrets.yaml
+
+# Dependencies and virtual environments
+node_modules/
+.venv/
+venv/
+env/
+
+# Python caches, builds, and test output
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# JavaScript and Bun output
+.bun/
+coverage/
+
+# Generated city and runtime data
+backend/city_data/
+backend/data/
+!backend/data/.gitkeep
+backend-files/**/files/
+backend-files/**/cache/
+backend-files/cache/
+backend-files/**/*_surface.parquet
+backend-files/**/*_edges_wgs84.parquet
+backend-files/**/*_split.graphml
+backend-files/**/results/
+backend-files/**/*.csv
+backend-files/safewalk_city_boundaries.geojson
+backend/otp/gtfs/
+backend/otp/osm/
+backend/otp/graph.obj
+backend/otp/streetGraph.obj
+backend/otp/report/
+*.osm.pbf
+cache/
+*.pkl
+*.pickle
+*.joblib
+*.parquet
+*.graphml
+
+# Xcode and SwiftPM user/build state
+DerivedData/
+.build/
+frontend/.swiftpm/
+frontend/SafeWalk.xcodeproj/xcuserdata/
+frontend/SafeWalk.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+*.pbxuser
+*.mode?v?
+*.perspectivev?
+
+# Editors, operating systems, and local tools
+.DS_Store
+.AppleDouble
+._*
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.claude/
+.claire/
+.codegraph/
+.worktrees/
+entities.json
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Local deployment overrides
+docker-compose.override.yml
+*.tar

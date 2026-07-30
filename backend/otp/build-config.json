@@ -1,0 +1,31 @@
+{
+  "osm": [
+    {
+      "source": "combined.osm.pbf",
+      "osmTagMapping": "default"
+    }
+  ],
+  "transitFeeds": [
+    { "type": "gtfs", "source": "gtfs/mbta.zip" },
+    { "type": "gtfs", "source": "gtfs/cta.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-subway.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-lirr.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-mnr.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-bus-bx.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-bus-b.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-bus-m.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-bus-q.zip" },
+    { "type": "gtfs", "source": "gtfs/mta-bus-si.zip" },
+    { "type": "gtfs", "source": "gtfs/marta.zip" },
+    { "type": "gtfs", "source": "gtfs/septa-bus.zip" },
+    { "type": "gtfs", "source": "gtfs/septa-rail.zip" },
+    { "type": "gtfs", "source": "gtfs/kcm.zip" },
+    { "type": "gtfs", "source": "gtfs/sound-transit.zip" }
+  ],
+  "streetGraph": "streetGraph.obj",
+  "graph": "graph.obj",
+  "buildReportDir": "report",
+  "areaVisibility": false,
+  "platformEntriesLinking": true,
+  "parentStopLinking": true
+}

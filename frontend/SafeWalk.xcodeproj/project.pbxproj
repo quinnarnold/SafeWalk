@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64B54FFE2EA95D63009E8A5E /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = 64B54FFD2EA95D63009E8A5E /* MapboxDirections */; };
+		64B550002EA95D63009E8A5E /* MapboxNavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 64B54FFF2EA95D63009E8A5E /* MapboxNavigationCore */; };
+		64B550022EA95D63009E8A5E /* MapboxNavigationUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64B550012EA95D63009E8A5E /* MapboxNavigationUIKit */; };
+		AB8FCCEA2F6751AB00EE1FF9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8FCCE92F6751AB00EE1FF9 /* WidgetKit.framework */; };
+		AB8FCCEC2F6751AB00EE1FF9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8FCCEB2F6751AB00EE1FF9 /* SwiftUI.framework */; };
+		AB8FCCF92F6751AB00EE1FF9 /* SafeWalkWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB8FCCE72F6751AB00EE1FF9 /* SafeWalkWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB8FCCF72F6751AB00EE1FF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64B54FC42EA95CB0009E8A5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB8FCCE62F6751AB00EE1FF9;
+			remoteInfo = SafeWalkWidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB8FCCFE2F6751AB00EE1FF9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AB8FCCF92F6751AB00EE1FF9 /* SafeWalkWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		64B54FCC2EA95CB0009E8A5E /* SafeWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8FCCE72F6751AB00EE1FF9 /* SafeWalkWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SafeWalkWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8FCCE92F6751AB00EE1FF9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		AB8FCCEB2F6751AB00EE1FF9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		AB8FCD092F67521B00EE1FF9 /* SafeWalkWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeWalkWidgetsExtension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6411BDDE2EA9729F00A663F1 /* Exceptions for "SafeWalk" folder in "SafeWalk" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 64B54FCB2EA95CB0009E8A5E /* SafeWalk */;
+		};
+		AB8FCCFD2F6751AB00EE1FF9 /* Exceptions for "SafeWalkWidgets" folder in "SafeWalkWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AB8FCCE62F6751AB00EE1FF9 /* SafeWalkWidgetsExtension */;
+		};
+		AB8FCD082F6751FD00EE1FF9 /* Exceptions for "SafeWalk" folder in "SafeWalkWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LiveActivity/ManeuverIcon.swift,
+				LiveActivity/SafeWalkLiveActivityView.swift,
+				LiveActivity/SafeWalkNavigationAttributes.swift,
+				SharedDefaults.swift,
+			);
+			target = AB8FCCE62F6751AB00EE1FF9 /* SafeWalkWidgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		64B54FCE2EA95CB0009E8A5E /* SafeWalk */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6411BDDE2EA9729F00A663F1 /* Exceptions for "SafeWalk" folder in "SafeWalk" target */,
+				AB8FCD082F6751FD00EE1FF9 /* Exceptions for "SafeWalk" folder in "SafeWalkWidgetsExtension" target */,
+			);
+			path = SafeWalk;
+			sourceTree = "<group>";
+		};
+		AB8FCCED2F6751AB00EE1FF9 /* SafeWalkWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AB8FCCFD2F6751AB00EE1FF9 /* Exceptions for "SafeWalkWidgets" folder in "SafeWalkWidgetsExtension" target */,
+			);
+			path = SafeWalkWidgets;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64B54FC92EA95CB0009E8A5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B550022EA95D63009E8A5E /* MapboxNavigationUIKit in Frameworks */,
+				64B550002EA95D63009E8A5E /* MapboxNavigationCore in Frameworks */,
+				64B54FFE2EA95D63009E8A5E /* MapboxDirections in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8FCCE42F6751AB00EE1FF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB8FCCEC2F6751AB00EE1FF9 /* SwiftUI.framework in Frameworks */,
+				AB8FCCEA2F6751AB00EE1FF9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64B54FC32EA95CB0009E8A5E = {
+			isa = PBXGroup;
+			children = (
+				AB8FCD092F67521B00EE1FF9 /* SafeWalkWidgetsExtension.entitlements */,
+				64B54FCE2EA95CB0009E8A5E /* SafeWalk */,
+				AB8FCCED2F6751AB00EE1FF9 /* SafeWalkWidgets */,
+				AB8FCCE82F6751AB00EE1FF9 /* Frameworks */,
+				64B54FCD2EA95CB0009E8A5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64B54FCD2EA95CB0009E8A5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64B54FCC2EA95CB0009E8A5E /* SafeWalk.app */,
+				AB8FCCE72F6751AB00EE1FF9 /* SafeWalkWidgetsExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB8FCCE82F6751AB00EE1FF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB8FCCE92F6751AB00EE1FF9 /* WidgetKit.framework */,
+				AB8FCCEB2F6751AB00EE1FF9 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64B54FCB2EA95CB0009E8A5E /* SafeWalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64B54FD72EA95CB1009E8A5E /* Build configuration list for PBXNativeTarget "SafeWalk" */;
+			buildPhases = (
+				64B54FC82EA95CB0009E8A5E /* Sources */,
+				64B54FC92EA95CB0009E8A5E /* Frameworks */,
+				64B54FCA2EA95CB0009E8A5E /* Resources */,
+				AB8FCCFE2F6751AB00EE1FF9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB8FCCF82F6751AB00EE1FF9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				64B54FCE2EA95CB0009E8A5E /* SafeWalk */,
+			);
+			name = SafeWalk;
+			packageProductDependencies = (
+				64B54FFD2EA95D63009E8A5E /* MapboxDirections */,
+				64B54FFF2EA95D63009E8A5E /* MapboxNavigationCore */,
+				64B550012EA95D63009E8A5E /* MapboxNavigationUIKit */,
+			);
+			productName = SafeWalk;
+			productReference = 64B54FCC2EA95CB0009E8A5E /* SafeWalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB8FCCE62F6751AB00EE1FF9 /* SafeWalkWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB8FCCFA2F6751AB00EE1FF9 /* Build configuration list for PBXNativeTarget "SafeWalkWidgetsExtension" */;
+			buildPhases = (
+				AB8FCCE32F6751AB00EE1FF9 /* Sources */,
+				AB8FCCE42F6751AB00EE1FF9 /* Frameworks */,
+				AB8FCCE52F6751AB00EE1FF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AB8FCCED2F6751AB00EE1FF9 /* SafeWalkWidgets */,
+			);
+			name = SafeWalkWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = SafeWalkWidgetsExtension;
+			productReference = AB8FCCE72F6751AB00EE1FF9 /* SafeWalkWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64B54FC42EA95CB0009E8A5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					64B54FCB2EA95CB0009E8A5E = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
+					AB8FCCE62F6751AB00EE1FF9 = {
+						CreatedOnToolsVersion = 26.1;
+					};
+				};
+			};
+			buildConfigurationList = 64B54FC72EA95CB0009E8A5E /* Build configuration list for PBXProject "SafeWalk" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64B54FC32EA95CB0009E8A5E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				64B54FFC2EA95D63009E8A5E /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 64B54FCD2EA95CB0009E8A5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64B54FCB2EA95CB0009E8A5E /* SafeWalk */,
+				AB8FCCE62F6751AB00EE1FF9 /* SafeWalkWidgetsExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64B54FCA2EA95CB0009E8A5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8FCCE52F6751AB00EE1FF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64B54FC82EA95CB0009E8A5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8FCCE32F6751AB00EE1FF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB8FCCF82F6751AB00EE1FF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB8FCCE62F6751AB00EE1FF9 /* SafeWalkWidgetsExtension */;
+			targetProxy = AB8FCCF72F6751AB00EE1FF9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		64B54FD52EA95CB1009E8A5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64B54FD62EA95CB1009E8A5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64B54FD82EA95CB1009E8A5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeWalk/SafeWalk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafeWalk;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SafeWalk uses your location while navigating routes";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SafeWalk uses your location to calculate walking routes and provide navigation directions";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.12;
+				PRODUCT_BUNDLE_IDENTIFIER = org.safewalk.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SAFEWALK_APP_GROUP = group.org.safewalk.app;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		64B54FD92EA95CB1009E8A5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeWalk/SafeWalk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafeWalk;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SafeWalk uses your location while navigating routes";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SafeWalk uses your location to calculate walking routes and provide navigation directions";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.12;
+				PRODUCT_BUNDLE_IDENTIFIER = org.safewalk.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SAFEWALK_APP_GROUP = group.org.safewalk.app;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AB8FCCFB2F6751AB00EE1FF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SafeWalkWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalkWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafeWalkWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 4.12;
+				PRODUCT_BUNDLE_IDENTIFIER = org.safewalk.app.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SAFEWALK_APP_GROUP = group.org.safewalk.app;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AB8FCCFC2F6751AB00EE1FF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SafeWalkWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalkWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafeWalkWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 4.12;
+				PRODUCT_BUNDLE_IDENTIFIER = org.safewalk.app.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SAFEWALK_APP_GROUP = group.org.safewalk.app;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64B54FC72EA95CB0009E8A5E /* Build configuration list for PBXProject "SafeWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B54FD52EA95CB1009E8A5E /* Debug */,
+				64B54FD62EA95CB1009E8A5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64B54FD72EA95CB1009E8A5E /* Build configuration list for PBXNativeTarget "SafeWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B54FD82EA95CB1009E8A5E /* Debug */,
+				64B54FD92EA95CB1009E8A5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB8FCCFA2F6751AB00EE1FF9 /* Build configuration list for PBXNativeTarget "SafeWalkWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB8FCCFB2F6751AB00EE1FF9 /* Debug */,
+				AB8FCCFC2F6751AB00EE1FF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		64B54FFC2EA95D63009E8A5E /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-navigation-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.12.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64B54FFD2EA95D63009E8A5E /* MapboxDirections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64B54FFC2EA95D63009E8A5E /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxDirections;
+		};
+		64B54FFF2EA95D63009E8A5E /* MapboxNavigationCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64B54FFC2EA95D63009E8A5E /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigationCore;
+		};
+		64B550012EA95D63009E8A5E /* MapboxNavigationUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64B54FFC2EA95D63009E8A5E /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigationUIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 64B54FC42EA95CB0009E8A5E /* Project object */;
+}

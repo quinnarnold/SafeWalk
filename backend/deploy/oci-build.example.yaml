@@ -1,0 +1,47 @@
+version: 0.1
+component: build
+timeoutInSeconds: 7200
+shell: bash
+
+# Copy this file into your OCI DevOps build pipeline and replace every
+# REPLACE_* value. It is an example, not an active SafeWalk deployment.
+env:
+  variables:
+    REGISTRY: "REPLACE_REGISTRY_HOST"
+    NAMESPACE: "REPLACE_REGISTRY_NAMESPACE"
+    REPOSITORY: "safewalk"
+    BUCKET: "REPLACE_OBJECT_STORAGE_BUCKET"
+
+steps:
+  - type: Command
+    name: "Download public-data artifacts"
+    command: |
+      set -euo pipefail
+      cd "${OCI_PRIMARY_SOURCE_DIR}/backend"
+      mkdir -p city_data
+      for city in atlanta boston chicago newyork philadelphia seattle; do
+        for suffix in split.graphml edges_wgs84.parquet surface.parquet; do
+          object="${city}_${suffix}"
+          oci os object get \
+            --namespace-name "${NAMESPACE}" \
+            --bucket-name "${BUCKET}" \
+            --name "${object}" \
+            --file "city_data/${object}" \
+            --auth resource_principal
+        done
+      done
+
+  - type: Command
+    name: "Build and push city images"
+    command: |
+      set -euo pipefail
+      cd "${OCI_PRIMARY_SOURCE_DIR}/backend"
+      tag="${OCI_BUILD_RUN_ID##*.}"
+      for city in atlanta boston chicago newyork philadelphia seattle; do
+        image="${REGISTRY}/${NAMESPACE}/${REPOSITORY}/safewalk-${city}"
+        docker build --build-arg "CITY_NAME=${city}" \
+          -t "${image}:${tag}" \
+          -t "${image}:latest" .
+        docker push "${image}:${tag}"
+        docker push "${image}:latest"
+      done

@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1200]
+      - id: detect-private-key
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.9
+    hooks:
+      - id: ruff
+        args: [--fix, --no-cache]
+        files: ^(backend/python|backend-files)/
+
+  - repo: local
+    hooks:
+      - id: ts-typecheck
+        name: TypeScript typecheck
+        language: system
+        entry: bash -c 'cd backend/ts && bun run typecheck'
+        files: ^backend/ts/src/.*\.ts$
+        pass_filenames: false
+
+      - id: ts-lint
+        name: TypeScript lint
+        language: system
+        entry: bash -c 'cd backend/ts && bun run lint'
+        files: ^backend/ts/src/.*\.ts$
+        pass_filenames: false

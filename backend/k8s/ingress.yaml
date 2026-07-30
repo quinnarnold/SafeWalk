@@ -1,0 +1,83 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: safewalk-ingress
+  namespace: safewalk
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+spec:
+  tls:
+    - hosts:
+        - safewalk.example.com
+      secretName: safewalk-tls
+  rules:
+    - host: safewalk.example.com
+      http:
+        paths:
+          - path: /boston
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-boston-svc
+                port:
+                  number: 8080
+          - path: /chicago
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-chicago-svc
+                port:
+                  number: 8080
+          - path: /newyork
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-newyork-svc
+                port:
+                  number: 8080
+          - path: /atlanta
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-atlanta-svc
+                port:
+                  number: 8080
+          - path: /philadelphia
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-philadelphia-svc
+                port:
+                  number: 8080
+          - path: /seattle
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-seattle-svc
+                port:
+                  number: 8080
+          - path: /cities
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-boston-svc
+                port:
+                  number: 8080
+          - path: /health
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-boston-svc
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: safe-boston-svc
+                port:
+                  number: 8080

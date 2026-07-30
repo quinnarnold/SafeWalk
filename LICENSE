@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 quinnarnold
+Copyright (c) 2026 SafeWalk contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Scope of this license
+
+The MIT grant above applies to SafeWalk-authored source code and documentation
+and to the following maintainer-contributed project raster assets. The
+maintainer confirms that they hold sufficient rights to redistribute and
+license these project assets and intentionally licenses them under the same
+MIT terms:
+
+- frontend/SafeWalk/Assets.xcassets/AppIcon.appiconset/AppIcon (1) 1.png
+- frontend/SafeWalk/Assets.xcassets/sourcePin.imageset/sourcePin.png
+- frontend/SafeWalk/Assets.xcassets/destinationPin.imageset/destinationPin.png
+
+This grant does not apply to third-party dependencies, services, or
+platform-supplied assets; public incident records, OpenStreetMap data, transit
+feeds, or map content; or generated artifacts that incorporate those
+materials. Those remain subject to their respective sources, licenses, terms,
+attribution requirements, and redistribution limits. See
+THIRD_PARTY_NOTICES.md and DATA_SOURCES.md.

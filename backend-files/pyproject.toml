@@ -1,0 +1,29 @@
+[project]
+name = "safewalk-data-pipeline"
+version = "1.0.0"
+description = "Reproducible public-data pipeline for SafeWalk city routing artifacts"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "geopandas>=1.0,<2",
+  "networkx>=3.3,<4",
+  "numpy>=2.0,<3",
+  "osmnx>=2.0,<3",
+  "pandas>=2.2,<3",
+  "pyarrow>=17,<24",
+  "requests>=2.32,<3",
+  "scipy>=1.13,<2",
+  "shapely>=2.0,<3",
+  "sodapy>=2.2,<3",
+  "tqdm>=4.66,<5",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.15,<0.16"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]

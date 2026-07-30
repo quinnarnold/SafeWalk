@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: safe-atlanta
+  namespace: safewalk
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: safe-atlanta
+  template:
+    metadata:
+      labels:
+        app: safe-atlanta
+    spec:
+      containers:
+        - name: safe-atlanta
+          image: ghcr.io/your-org/safewalk-atlanta:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CITY_NAME
+              value: "atlanta"
+            - name: REDIS_HOST
+              value: "redis-svc.safewalk.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: PORT
+              value: "8080"
+            - name: PYTHON_URL
+              value: "http://127.0.0.1:8000"
+            - name: NODE_ENV
+              value: "production"
+            - name: AUTH_MODE
+              value: "app-attest"
+            - name: PUBLIC_BASE_URL
+              value: "https://safewalk.example.com"
+            - name: ALLOWED_ORIGINS
+              value: "https://safewalk.example.com"
+            - name: TRUST_PROXY
+              value: "true"
+            - name: MAPBOX_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: safewalk-secrets
+                  key: MAPBOX_TOKEN
+            - name: MAPBOX_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: safewalk-secrets
+                  key: MAPBOX_USERNAME
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: safewalk-secrets
+                  key: REDIS_PASSWORD
+            - name: APP_ATTEST_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: safewalk-secrets
+                  key: APP_ATTEST_APP_ID
+            - name: APP_ATTEST_BUNDLE_VERSION
+              value: "1"
+            - name: APP_ATTEST_ALLOWED_VALIDATION_CATEGORIES
+              value: "2,3,4,5"
+            - name: BUN_INSTALL_CACHE_DIR
+              value: "/tmp/bun-cache"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "1Gi"
+            limits:
+              cpu: "500m"
+              memory: "2Gi"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 30
+            timeoutSeconds: 10
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: safe-atlanta-svc
+  namespace: safewalk
+spec:
+  selector:
+    app: safe-atlanta
+  ports:
+    - port: 8080
+      targetPort: 8080

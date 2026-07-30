@@ -1,0 +1,153 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  ts:
+    name: TypeScript (test, typecheck, lint)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/ts
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.12
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Audit production dependencies
+        run: bun audit --production
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Test
+        run: bun test
+
+  python:
+    name: Python (test, lint)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/python
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.lock
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Test
+        run: pytest tests/ -v
+
+  data-pipeline:
+    name: Public data pipeline (lock, lint, CLI)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend-files
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          enable-cache: true
+
+      - name: Install locked dependencies
+        run: uv sync --locked --dev
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Check city CLIs
+        run: |
+          for city in atlanta boston chicago newyork philadelphia seattle; do
+            uv run python "${city}/${city}.py" --help >/dev/null
+          done
+          uv run python fetch_boundaries.py --help >/dev/null
+
+      - name: Test generator contracts
+        run: uv run python -m unittest discover -s tests -v
+
+  ios-syntax:
+    name: iOS syntax
+    runs-on: macos-15
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Parse Swift sources
+        run: find frontend -name '*.swift' -print0 | xargs -0 xcrun swiftc -frontend -parse
+
+      - name: Validate property lists
+        run: find frontend -type f \( -name '*.plist' -o -name '*.xcprivacy' -o -name '*.entitlements' \) -print0 | xargs -0 -n1 plutil -lint
+
+  docker:
+    name: Backend container
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+
+      - name: Create synthetic build data
+        run: |
+          pip install -r backend/python/requirements.lock
+          python backend/scripts/create_demo_data.py
+
+      - name: Build backend image
+        run: docker build --build-arg CITY_NAME=boston backend
+
+  ios:
+    name: iOS build
+    if: vars.ENABLE_IOS_CI == 'true'
+    runs-on: macos-15
+
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Configure Mapbox downloads token
+        env:
+          MAPBOX_DOWNLOADS_TOKEN: ${{ secrets.MAPBOX_DOWNLOADS_TOKEN }}
+        run: |
+          test -n "${MAPBOX_DOWNLOADS_TOKEN}"
+          printf '%s\n' \
+            'machine api.mapbox.com' \
+            'login mapbox' \
+            "password ${MAPBOX_DOWNLOADS_TOKEN}" > "$HOME/.netrc"
+          chmod 600 "$HOME/.netrc"
+
+      - name: Build
+        run: |
+          xcodebuild \
+            -project frontend/SafeWalk.xcodeproj \
+            -scheme SafeWalk \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build

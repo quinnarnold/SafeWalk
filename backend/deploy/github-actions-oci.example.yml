@@ -1,0 +1,78 @@
+name: Deploy SafeWalk to OCI
+
+# This file is intentionally outside .github/workflows. Copy it there only
+# after configuring your own OCI registry, bucket, cluster, and environment
+# protection rules.
+on:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ${{ vars.OCI_REGISTRY }}
+  NAMESPACE: ${{ vars.OCI_NAMESPACE }}
+  REPOSITORY: ${{ vars.OCI_REPOSITORY }}
+  BUCKET: ${{ vars.OCI_BUCKET }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.OCI_REGISTRY_USERNAME }}
+          password: ${{ secrets.OCI_REGISTRY_TOKEN }}
+
+      - name: Configure OCI CLI
+        env:
+          OCI_PRIVATE_KEY: ${{ secrets.OCI_PRIVATE_KEY }}
+          OCI_USER_OCID: ${{ secrets.OCI_USER_OCID }}
+          OCI_TENANCY_OCID: ${{ secrets.OCI_TENANCY_OCID }}
+          OCI_KEY_FINGERPRINT: ${{ secrets.OCI_KEY_FINGERPRINT }}
+        run: |
+          pip install --disable-pip-version-check oci-cli
+          mkdir -p "$HOME/.oci"
+          printf '%s' "${OCI_PRIVATE_KEY}" > "$HOME/.oci/key.pem"
+          chmod 600 "$HOME/.oci/key.pem"
+          printf '%s\n' \
+            '[DEFAULT]' \
+            "user=${OCI_USER_OCID}" \
+            "tenancy=${OCI_TENANCY_OCID}" \
+            "fingerprint=${OCI_KEY_FINGERPRINT}" \
+            "key_file=$HOME/.oci/key.pem" \
+            'region=${{ vars.OCI_REGION }}' > "$HOME/.oci/config"
+
+      - name: Download generated city artifacts
+        working-directory: backend
+        run: |
+          mkdir -p city_data
+          for city in atlanta boston chicago newyork philadelphia seattle; do
+            for suffix in split.graphml edges_wgs84.parquet surface.parquet; do
+              object="${city}_${suffix}"
+              oci os object get \
+                --namespace-name "${NAMESPACE}" \
+                --bucket-name "${BUCKET}" \
+                --name "${object}" \
+                --file "city_data/${object}"
+            done
+          done
+
+      - name: Build and push
+        working-directory: backend
+        run: |
+          for city in atlanta boston chicago newyork philadelphia seattle; do
+            image="${REGISTRY}/${NAMESPACE}/${REPOSITORY}/safewalk-${city}"
+            docker build --build-arg "CITY_NAME=${city}" \
+              -t "${image}:${GITHUB_SHA}" .
+            docker push "${image}:${GITHUB_SHA}"
+          done
+
+      - name: Trigger deployment pipeline
+        run: |
+          oci devops deployment create-pipeline-deployment \
+            --pipeline-id "${{ secrets.OCI_DEPLOY_PIPELINE_OCID }}" \
+            --display-name "safewalk-${GITHUB_SHA}"

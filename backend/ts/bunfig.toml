@@ -1,0 +1,5 @@
+[install]
+node_modules = "node_modules"
+
+[test]
+preload = ["./tests/preload-mocks.ts"]

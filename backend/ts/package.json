@@ -24,7 +24,7 @@
     "@fastify/helmet": "^13.1.0",
     "@fastify/rate-limit": "^11.1.0",
     "cbor-x": "^1.6.4",
-    "fastify": "^5.10.0",
+    "fastify": "^5.11.0",
     "ioredis": "^5.11.1",
     "pino": "^9.14.0",
     "pino-pretty": "^11.3.0",

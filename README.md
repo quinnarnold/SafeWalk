@@ -9,21 +9,9 @@ will be safe, guarantee a crime-free route, or replace emergency services,
 local guidance, or personal judgment. See
 [SAFETY_AND_LIMITATIONS.md](SAFETY_AND_LIMITATIONS.md).
 
-## Project context
-
-SafeWalk reflects thousands of hours I spent learning geographic data
-processing, KDE-based modeling, full-stack iOS and backend engineering, and
-route and navigation systems. I am releasing it so others can learn from and
-adapt the work, including its Apple App Attest integration, secure backend
-patterns, and OpenStreetMap-based routing pipeline. Responsible adaptations
-for other places and contexts are welcome. The aim is to help people make more
-informed route choices and to contribute something useful—not to promise
-safety or exceed the limitations documented here.
-
 ## Related research
 
-SafeWalk was developed before I later encountered the following work; this is
-development context, not a claim of research priority:
+Related work on route planning beyond shortest paths:
 
 - Fariha Tabassum Islam, Tanzima Hashem, and Rifat Shahriyar,
   ["A Crowd-enabled Solution for Privacy-Preserving and Personalized Safe
